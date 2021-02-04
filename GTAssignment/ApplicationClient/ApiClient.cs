@@ -15,60 +15,93 @@ namespace GTAssignment.ApplicationClient
     public class ApiClient
     {
         private string ApiURL;
-        private static TestConfig config ;
+        private static TestConfig config;
 
         public ApiClient()
         {
             config = ConfigReader.ParseConfig();
         }
         public void SetUri(string uri)
-        { 
+        {
             ApiURL = config.BaseURL + uri;
         }
 
         public HttpResponseMessage PostData(dynamic dataToPost)
         {
-            using var client = new HttpClient();
-            var jsonData = "";
-            if (dataToPost is String)
-                jsonData = dataToPost;
-            else
-                jsonData = JsonConvert.SerializeObject(dataToPost);
+            try
+            {
+                using var client = new HttpClient();
+                var jsonData = "";
+                if (dataToPost is String)
+                    jsonData = dataToPost;
+                else
+                    jsonData = JsonConvert.SerializeObject(dataToPost);
 
-            var content = new StringContent(jsonData, Encoding.UTF8);
-            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-            client.DefaultRequestHeaders.Add("Accept", "application/json");
-            return client.PostAsync(ApiURL, content).Result;
+                var content = new StringContent(jsonData, Encoding.UTF8);
+                content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                client.DefaultRequestHeaders.Add("Accept", "application/json");
+                return client.PostAsync(ApiURL, content).Result;
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
 
         }
 
         public HttpResponseMessage GetData(string keyValue)
         {
-            using var client = new HttpClient();
-            client.DefaultRequestHeaders.Add("Accept", "application/json");
-            return client.GetAsync(ApiURL + "/" + keyValue).Result;
+            try
+            {
+                using var client = new HttpClient();
+                client.DefaultRequestHeaders.Add("Accept", "application/json");
+                return client.GetAsync(ApiURL + "/" + keyValue).Result;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
 
         }
 
         public HttpResponseMessage DeleteData(string keyValue)
         {
-            using var client = new HttpClient();
-            client.DefaultRequestHeaders.Add("Accept", "application/json");
-            return client.DeleteAsync(ApiURL + "/" + keyValue).Result;
+            try
+            {
+                using var client = new HttpClient();
+                client.DefaultRequestHeaders.Add("Accept", "application/json");
+                return client.DeleteAsync(ApiURL + "/" + keyValue).Result;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
 
         }
 
-        public HttpResponseMessage PutData(dynamic  dataToUpdate, string keyValue)
+        public HttpResponseMessage PutData(dynamic dataToUpdate, string keyValue)
         {
-            using var client = new HttpClient();
-            var content = new StringContent(JsonConvert.SerializeObject(dataToUpdate), Encoding.UTF8);
-            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-            client.DefaultRequestHeaders.Add("Accept", "application/json");
-            return client.PutAsync(ApiURL + "/" + keyValue, content).Result;
+            try
+            {
+                using var client = new HttpClient();
+                var content = new StringContent(JsonConvert.SerializeObject(dataToUpdate), Encoding.UTF8);
+                content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                client.DefaultRequestHeaders.Add("Accept", "application/json");
+                return client.PutAsync(ApiURL + "/" + keyValue, content).Result;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
 
         }
-        
-}
+
+    }
 
 
 

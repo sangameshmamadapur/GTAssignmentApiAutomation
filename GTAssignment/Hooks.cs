@@ -5,6 +5,7 @@ using GTAssignment.ApplicationClient;
 using GTAssignment.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using TechTalk.SpecFlow;
@@ -24,7 +25,7 @@ namespace GTAssignment
         [BeforeTestRun]
         public static void BeforeTestRun()
         {
-            _extentHtmlReporter = new ExtentHtmlReporter(@"C:\Users\Lenovo\Documents\GitHub\GTAssignment\GTAssignment\index.html");
+            _extentHtmlReporter = new ExtentHtmlReporter(Directory.GetCurrentDirectory() + @"\index.html");
             _extentReports = new ExtentReports();
             _extentReports.AttachReporter(_extentHtmlReporter);
         }

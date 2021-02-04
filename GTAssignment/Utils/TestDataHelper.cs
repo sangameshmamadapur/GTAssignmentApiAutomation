@@ -16,7 +16,7 @@ namespace GTAssignment.Utils
                 username = GetRandomString(8),
                 firstName = GetRandomString(4),
                 lastName = GetRandomString(4),
-                email = GetRandomString(4)+ GetRandomNumbers(3) + "@testmail.com",
+                email = GetRandomString(4) + GetRandomNumbers(3) + "@testmail.com",
                 password = GetRandomString(8),
                 phone = "1234567890",
                 userStatus = 1,
