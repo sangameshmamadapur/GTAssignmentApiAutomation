@@ -13,5 +13,6 @@ Steps to run the project on check out:
 6.HTTP Client
 
 # API Automated: POST,GET,DELETE,PUT (User)
+https://petstore.swagger.io/ 
 
 Note: Plase change the path of extent report index.html in hooks
