@@ -16,4 +16,4 @@ Steps to run the project on check out:
 # API Automated: POST,GET,DELETE,PUT (User)
 https://petstore.swagger.io/ 
 
-Note: Plase change the path of extent report index.html in hooks
+Note: Plase find the test report in "bin\Debug\netcoreapp3.1" in this folder
