@@ -11,5 +11,4 @@ Tools Used:
 
 Language :C#
 
-Note: Screenshot location is set to Desktop of the running machine
 Note: Plase change the path of extente report index.html in hooks
